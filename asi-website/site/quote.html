@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Request a Project Quote | ASI Florida</title>
+<meta name="description" content="Start a project inquiry with American Standard Construction &amp; Inspection for plan review, inspections, permitting, consulting, private provider, and related services.">
+<style>
+:root{--bg:#061017;--bg2:#091821;--ink:#f6efe6;--muted:#98a4ac;--gold:#d5a43e;--gold2:#efc76f;--line:rgba(255,255,255,.12);--max:1240px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 82% 8%,rgba(42,94,116,.18),transparent 26%),var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}.wrap{width:min(var(--max),calc(100% - 48px));margin:auto}
+nav{position:fixed;inset:0 0 auto;z-index:30;padding:18px 0;background:linear-gradient(to bottom,rgba(3,12,18,.97),rgba(3,12,18,.62),transparent);backdrop-filter:blur(14px)}.nav{display:flex;justify-content:space-between;align-items:center}.brand{display:flex;align-items:center;gap:13px}.mark{width:42px;height:42px;border:1px solid rgba(213,164,62,.75);border-radius:50%;display:grid;place-items:center;color:var(--gold);font:400 21px Georgia}.brandText{font-size:12px;line-height:1.12;letter-spacing:.16em;font-weight:700}.back{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#d8bd83}
+.hero{padding:145px 0 58px}.eyebrow{font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}.hero h1{font:400 clamp(58px,7vw,108px)/.92 Georgia;letter-spacing:-.05em;margin:0;max-width:9ch}.hero p{color:#a7b2b9;font-size:18px;line-height:1.7;max-width:720px;margin:26px 0 0}
+.shell{border:1px solid rgba(213,164,62,.28);border-radius:30px;background:linear-gradient(145deg,rgba(213,164,62,.075),rgba(255,255,255,.025) 35%,rgba(31,75,95,.08));overflow:hidden;margin-bottom:100px}
+.topbar{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}.stepTab{padding:18px 20px;border-right:1px solid var(--line);color:#71808a;font-size:10px;letter-spacing:.13em;text-transform:uppercase}.stepTab:last-child{border-right:0}.stepTab.active{color:#edca7d;background:rgba(213,164,62,.055)}
+.content{padding:34px}.pane{display:none}.pane.active{display:block}.paneHead{display:grid;grid-template-columns:.75fr 1.25fr;gap:54px;margin-bottom:28px}.paneHead h2{font:400 clamp(38px,4.5vw,64px)/1 Georgia;margin:0}.paneHead p{color:#96a3ab;line-height:1.7;margin:0}
+.serviceChoice{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.choice{border:1px solid var(--line);border-radius:18px;padding:19px;background:rgba(255,255,255,.023);cursor:pointer;transition:.22s}.choice:hover,.choice.selected{border-color:rgba(213,164,62,.58);background:rgba(213,164,62,.07);transform:translateY(-2px)}.choice small{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#75828b}.choice b{display:block;font:400 23px Georgia;margin-top:12px}.choice span{display:block;color:#85929a;font-size:12px;line-height:1.5;margin-top:7px}
+.formGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:8px}.field.full{grid-column:1/-1}label{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#7c8992}input,textarea,select{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.035);color:#fff;border-radius:12px;padding:14px;outline:none}select option{background:#0a151d}input:focus,textarea:focus,select:focus{border-color:rgba(213,164,62,.62)}textarea{min-height:130px;resize:vertical}.help{font-size:11px;color:#697780;line-height:1.45}.error{font-size:11px;color:#e0a692;display:none}.field.invalid .error{display:block}.field.invalid input,.field.invalid textarea,.field.invalid select{border-color:#b86c58}
+.upload{border:1px dashed rgba(213,164,62,.38);border-radius:16px;padding:23px;background:rgba(213,164,62,.025)}.fileList{margin-top:12px;display:grid;gap:7px}.fileItem{display:flex;justify-content:space-between;gap:15px;color:#9ca8af;font-size:12px;border-top:1px solid rgba(255,255,255,.07);padding-top:7px}
+.navRow{display:flex;justify-content:space-between;gap:12px;margin-top:28px}.btn{border:1px solid var(--line);background:transparent;color:#fff;padding:14px 21px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}.btn.primary{background:linear-gradient(90deg,#c89b42,#e9c66f);border-color:transparent;color:#111;font-weight:700}.btn:disabled{opacity:.35;cursor:not-allowed}
+.review{display:grid;grid-template-columns:1fr 1fr;gap:14px}.reviewCard{border:1px solid var(--line);border-radius:18px;padding:20px;background:rgba(255,255,255,.023)}.reviewCard.full{grid-column:1/-1}.reviewCard small{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#74818a}.reviewCard b{display:block;font:400 23px Georgia;margin-top:10px}.reviewCard p{color:#94a0a8;line-height:1.6;margin:9px 0 0}.success{display:none;text-align:center;padding:60px 24px}.success.show{display:block}.successMark{width:72px;height:72px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;margin:0 auto 22px;color:var(--gold);font-size:32px}.success h2{font:400 clamp(42px,5vw,70px)/1 Georgia;margin:0}.success p{color:#98a5ad;max-width:650px;margin:20px auto 0;line-height:1.7}
+.saveNote{color:#65737c;font-size:10px;text-align:right;margin-top:10px}
+footer{border-top:1px solid var(--line);padding:30px 0 45px;color:#71808a;font-size:10px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media(max-width:850px){.topbar{grid-template-columns:1fr 1fr}.stepTab:nth-child(2){border-right:0}.paneHead,.formGrid,.review{grid-template-columns:1fr}.field.full,.reviewCard.full{grid-column:auto}.serviceChoice{grid-template-columns:1fr 1fr}}@media(max-width:580px){.wrap{width:calc(100% - 28px)}.serviceChoice,.topbar{grid-template-columns:1fr}.stepTab{border-right:0;border-bottom:1px solid var(--line)}.content{padding:24px 18px}.navRow{flex-direction:column-reverse}.btn{width:100%;justify-content:center}}
+</style>
+
+<style id="v12-production">
+:focus-visible{outline:2px solid var(--gold,#d5a43e);outline-offset:4px}
+.skipLink{
+  position:fixed;left:14px;top:-50px;z-index:999;background:#fff;color:#111;
+  padding:10px 14px;border-radius:8px;font-size:13px;transition:.2s
+}
+.skipLink:focus{top:14px}
+img{max-width:100%;height:auto}
+[aria-hidden="true"]{pointer-events:none}
+.srOnly{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.cookieNote{
+  border-top:1px solid var(--line,rgba(255,255,255,.12));
+  margin-top:24px;padding-top:16px;color:#71808a;font-size:11px;line-height:1.55
+}
+.legalLinks{display:flex;gap:14px;flex-wrap:wrap}
+.legalLinks a{color:#71808a}
+.legalLinks a:hover{color:#fff}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
+</style>
+
+<link rel="canonical" href="https://www.asccinspection.net/quote.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#061017">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="<span data-asi-company>American Standard Construction & Inspection</span>">
+<meta property="og:title" content="Request a Project Quote | ASI Florida">
+<meta property="og:description" content="Start a project inquiry with American Standard Construction &amp; Inspection for plan review, inspections, permitting, consulting, private provider, and related services.">
+<meta property="og:url" content="https://www.asccinspection.net/quote.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Request a Project Quote | ASI Florida">
+<meta name="twitter:description" content="Start a project inquiry with American Standard Construction &amp; Inspection for plan review, inspections, permitting, consulting, private provider, and related services.">
+<script src="../config/site-config.js"></script>
+<script src="../js/quote-adapter.js"></script>
+<link rel="manifest" href="site.webmanifest">
+<link rel="icon" href="../assets/logos/favicon.svg" type="image/svg+xml">
+</head>
+<body><a class="skipLink" href="#main-content">Skip to main content</a>
+<nav aria-label="Primary navigation"><div class="wrap nav"><a class="brand" href="index.html"><span class="mark">A</span><span class="brandText">AMERICAN STANDARD<br>CONSTRUCTION & INSPECTION</span></a><a class="back" href="index.html">← Back to ASI</a></div></nav>
+
+<header class="hero"><div class="wrap"><div class="eyebrow">Project Intake</div><h1>Tell us what you're working on.</h1><p>You do not need to know the perfect service name before you start. Give us the project, property, or problem. This intake helps ASI understand the scope before the first conversation.</p></div></header>
+
+<main id="main-content" class="wrap">
+<div class="shell" id="shell">
+<div class="topbar">
+  <div class="stepTab active" data-tab="1">01 / Service</div>
+  <div class="stepTab" data-tab="2">02 / Project</div>
+  <div class="stepTab" data-tab="3">03 / Scope</div>
+  <div class="stepTab" data-tab="4">04 / Review</div>
+</div>
+<div class="content" id="formContent">
+  <section class="pane active" data-pane="1">
+    <div class="paneHead"><h2>What brings you to ASI?</h2><p>Select the closest fit. This does not lock you into a service; it simply helps route the project correctly.</p></div>
+    <div class="serviceChoice" id="serviceChoices">
+      <div class="choice" data-service="Plan Review"><small>Plans</small><b>Plan Review</b><span>Code-focused review before or during permitting.</span></div>
+      <div class="choice" data-service="Construction Inspections"><small>Field</small><b>Construction Inspections</b><span>Inspection support for active construction.</span></div>
+      <div class="choice" data-service="Private Provider Services"><small>Project Delivery</small><b>Private Provider</b><span>Eligible Florida plan review and inspection services.</span></div>
+      <div class="choice" data-service="Permit Assistance"><small>Permitting</small><b>Permit Assistance</b><span>Help navigating documentation and process friction.</span></div>
+      <div class="choice" data-service="Fire & Life Safety"><small>Life Safety</small><b>Fire & Life Safety</b><span>Inspection, coordination, or technical guidance.</span></div>
+      <div class="choice" data-service="Consulting / Code Administration"><small>Technical</small><b>Consulting</b><span>Difficult code, existing conditions, or technical strategy.</span></div>
+      <div class="choice" data-service="Home Inspection"><small>Property</small><b>Home Inspection</b><span>Independent property inspection services.</span></div>
+      <div class="choice" data-service="Not Sure"><small>General</small><b>Not Sure Yet</b><span>Describe the need and ASI will route it.</span></div>
+    </div>
+    <div class="navRow"><span></span><button class="btn primary" type="button" data-next="2" id="serviceNext" disabled>Continue ↗</button></div>
+  </section>
+
+  <section class="pane" data-pane="2">
+    <div class="paneHead"><h2>Tell us about the project.</h2><p>Basic client and project information gives ASI the context needed to evaluate the request.</p></div>
+    <div class="formGrid">
+      <div class="field" data-required><label>Name *</label><input id="name" type="text"><span class="error">Please enter your name.</span></div>
+      <div class="field"><label>Company</label><input id="company" type="text"></div>
+      <div class="field" data-required><label>Email *</label><input id="email" type="email"><span class="error">Enter a valid email address.</span></div>
+      <div class="field"><label>Phone</label><input id="phone" type="tel"></div>
+      <div class="field" data-required><label>Project Location *</label><input id="location" type="text" placeholder="City / County"><span class="error">Enter the project location.</span></div>
+      <div class="field"><label>Project Type</label><select id="projectType"><option value="">Select one</option><option>Residential</option><option>Commercial</option><option>Multifamily</option><option>Hospitality</option><option>Institutional / Government</option><option>Industrial</option><option>Existing Building / Renovation</option><option>Other</option></select></div>
+      <div class="field"><label>Approximate Square Footage</label><input id="squareFootage" type="text" placeholder="e.g. 5,200 SF"></div>
+      <div class="field"><label>Permit Status</label><select id="permitStatus"><option value="">Select one</option><option>Not yet submitted</option><option>Submitted / under review</option><option>Permit issued</option><option>Construction underway</option><option>Not sure / not applicable</option></select></div>
+    </div>
+    <div class="navRow"><button class="btn" type="button" data-next="1">← Back</button><button class="btn primary" type="button" data-next="3">Continue ↗</button></div>
+  </section>
+
+  <section class="pane" data-pane="3">
+    <div class="paneHead"><h2>What do you need?</h2><p>This is the useful part. Tell ASI what is happening, what is needed, and attach anything that helps explain the project.</p></div>
+    <div class="formGrid">
+      <div class="field full" data-required><label>Project Scope / Request *</label><textarea id="scope" placeholder="Describe the project, service needed, code issue, inspection request, permitting problem, or other relevant details."></textarea><span class="error">Please provide a short description of the request.</span></div>
+      <div class="field"><label>Desired Timing</label><select id="timing"><option value="">Select one</option><option>As soon as practical</option><option>Within 1–2 weeks</option><option>Within 30 days</option><option>Planning / future project</option><option>Not sure</option></select></div>
+      <div class="field"><label>How did you hear about ASI?</label><select id="source"><option value="">Select one</option><option>Referral</option><option>Existing client</option><option>Web search</option><option>Contractor / builder</option><option>Local government / agency</option><option>Other</option></select></div>
+      <div class="field full upload"><label>Plans / Documents</label><input id="files" type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.dwg,.dxf"><span class="help">Add plans, reports, permit comments, photos, or supporting documents. In this prototype files remain local to your browser and are not uploaded anywhere.</span><div class="fileList" id="fileList"></div></div>
+    </div>
+    <div class="navRow"><button class="btn" type="button" data-next="2">← Back</button><button class="btn primary" type="button" data-next="4">Review ↗</button></div>
+  </section>
+
+  <section class="pane" data-pane="4">
+    <div class="paneHead"><h2>Review before sending.</h2><p>Make sure the important details are right. You can go back to any step before submitting.</p></div>
+    <div class="review" id="review"></div>
+    
+<div class="reviewCard full" style="margin-top:14px">
+  <small>Consent</small>
+  <label style="display:flex;gap:10px;align-items:flex-start;margin-top:12px;text-transform:none;letter-spacing:0;font-size:12px;color:#a6b0b7">
+    <input id="consent" type="checkbox" style="width:auto;margin-top:2px">
+    <span>I agree that ASI may contact me regarding this project inquiry. I understand that submitting this form does not create a contract or guarantee service availability.</span>
+  </label>
+  <span class="error" id="consentError">Please confirm consent before submitting.</span>
+</div>
+<div class="srOnly" aria-hidden="true">
+  <label>Leave this field empty<input id="website" type="text" tabindex="-1" autocomplete="off"></label>
+</div>
+<div class="navRow"><button class="btn" type="button" data-next="3">← Back</button><button class="btn primary" type="button" id="submitBtn">Submit Project Inquiry ↗</button></div>
+  </section>
+  <div class="saveNote">Progress is automatically saved in this browser.</div>
+</div>
+
+<div class="success" id="success" role="status" aria-live="polite">
+  <div class="successMark">✓</div>
+  <h2>Project inquiry prepared.</h2>
+  <p>This prototype has completed the intake flow successfully. The production connection will send the submission and uploaded documents to the ASI workflow you choose—email, CRM, cloud storage, or your future quote engine.</p>
+  <div style="margin-top:28px"><a class="btn primary" href="index.html">Return to ASI</a></div>
+</div>
+</div>
+</main>
+
+<footer><div class="wrap foot"><span><span data-asi-company>AMERICAN STANDARD CONSTRUCTION & INSPECTION</span></span><span>CONSTRUCTION • COMPLIANCE • CONSULTING • FLORIDA</span></div><div class="wrap cookieNote">This website prototype does not currently use analytics or tracking cookies. Production privacy, terms, and accessibility statements should be finalized before launch.<div class="legalLinks" style="margin-top:8px"><a href="legal/privacy.html">Privacy</a><a href="legal/terms.html">Terms</a><a href="legal/accessibility.html">Accessibility</a></div></div></footer>
+
+<script>
+const stateKey='asiQuoteDraftV1';
+let state={service:'',name:'',company:'',email:'',phone:'',location:'',projectType:'',squareFootage:'',permitStatus:'',scope:'',timing:'',source:'',files:[]};
+try{const saved=JSON.parse(localStorage.getItem(stateKey)||'null');if(saved)state={...state,...saved,files:[]}}catch(e){}
+
+const ids=['name','company','email','phone','location','projectType','squareFootage','permitStatus','scope','timing','source'];
+function save(){
+  ids.forEach(id=>{const el=document.getElementById(id);if(el)state[id]=el.value});
+  localStorage.setItem(stateKey,JSON.stringify({...state,files:[]}));
+}
+function load(){
+  ids.forEach(id=>{const el=document.getElementById(id);if(el&&state[id])el.value=state[id]});
+  if(state.service){
+    document.querySelectorAll('.choice').forEach(c=>c.classList.toggle('selected',c.dataset.service===state.service));
+    document.getElementById('serviceNext').disabled=false;
+  }
+}
+function showStep(n){
+  document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('active',p.dataset.pane==n));
+  document.querySelectorAll('.stepTab').forEach(t=>t.classList.toggle('active',t.dataset.tab==n));
+  if(n==4)buildReview();
+  save();
+  window.scrollTo({top:document.getElementById('shell').offsetTop-95,behavior:'smooth'});
+}
+function validateStep(n){
+  let ok=true;
+  const pane=document.querySelector(`.pane[data-pane="${n}"]`);
+  pane.querySelectorAll('[data-required]').forEach(f=>{
+    const el=f.querySelector('input,textarea,select');
+    let valid=el.value.trim()!=='';
+    if(el.type==='email'&&valid)valid=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value);
+    f.classList.toggle('invalid',!valid);
+    if(!valid)ok=false;
+  });
+  return ok;
+}
+document.querySelectorAll('.choice').forEach(c=>c.addEventListener('click',()=>{
+  state.service=c.dataset.service;
+  document.querySelectorAll('.choice').forEach(x=>x.classList.remove('selected'));
+  c.classList.add('selected');
+  document.getElementById('serviceNext').disabled=false;
+  save();
+}));
+document.querySelectorAll('[data-next]').forEach(btn=>btn.addEventListener('click',()=>{
+  const current=document.querySelector('.pane.active').dataset.pane;
+  const next=btn.dataset.next;
+  if(Number(next)>Number(current)&&!validateStep(current))return;
+  showStep(next);
+}));
+ids.forEach(id=>document.getElementById(id)?.addEventListener('input',save));
+document.getElementById('files').addEventListener('change',e=>{
+  const maxEach=25*1024*1024;
+  const picked=[...e.target.files];
+  const oversized=picked.filter(f=>f.size>maxEach);
+  if(oversized.length){
+    alert('Each file must be 25 MB or smaller in this prototype.');
+    e.target.value='';
+    state.files=[];
+  }else{
+    state.files=picked.map(f=>({name:f.name,size:f.size,type:f.type}));
+  }
+  const list=document.getElementById('fileList');
+  list.innerHTML=state.files.map(f=>`<div class="fileItem"><span>${f.name}</span><span>${Math.ceil(f.size/1024)} KB</span></div>`).join('');
+});
+function buildReview(){
+  save();
+  const esc=s=>String(s||'—').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  document.getElementById('review').innerHTML=`
+    <div class="reviewCard"><small>Service</small><b>${esc(state.service)}</b></div>
+    <div class="reviewCard"><small>Client</small><b>${esc(state.name)}</b><p>${esc(state.company)}<br>${esc(state.email)}<br>${esc(state.phone)}</p></div>
+    <div class="reviewCard"><small>Project</small><b>${esc(state.projectType)}</b><p>${esc(state.location)}<br>${esc(state.squareFootage)}<br>${esc(state.permitStatus)}</p></div>
+    <div class="reviewCard"><small>Timing</small><b>${esc(state.timing)}</b><p>Source: ${esc(state.source)}</p></div>
+    <div class="reviewCard full"><small>Scope</small><p>${esc(state.scope)}</p></div>
+    <div class="reviewCard full"><small>Documents</small><p>${state.files.length?state.files.map(f=>esc(f.name)).join('<br>'):'No files attached.'}</p></div>`;
+}
+document.getElementById('submitBtn').addEventListener('click', async ()=>{
+  save();
+  const consent=document.getElementById('consent');
+  const consentError=document.getElementById('consentError');
+  const honeypot=document.getElementById('website');
+  if(honeypot&&honeypot.value.trim()!=='')return;
+  if(!consent.checked){
+    consentError.style.display='block';
+    consent.focus();
+    return;
+  }
+  consentError.style.display='none';
+
+  const submitBtn=document.getElementById('submitBtn');
+  const originalText=submitBtn.textContent;
+  submitBtn.disabled=true;
+  submitBtn.textContent='Submitting…';
+
+  try{
+    const fileInput=document.getElementById('files');
+    const result=await window.ASI_QUOTE_SUBMIT({...state}, [...(fileInput.files||[])]);
+    localStorage.removeItem(stateKey);
+    document.getElementById('formContent').style.display='none';
+    document.getElementById('success').classList.add('show');
+    const successP=document.querySelector('#success p');
+    if(successP && result && result.message) successP.textContent=result.message;
+    window.scrollTo({top:document.getElementById('shell').offsetTop-95,behavior:'smooth'});
+  }catch(err){
+    alert('We could not submit your inquiry. Please try again or contact ASI directly.');
+    console.error(err);
+    submitBtn.disabled=false;
+    submitBtn.textContent=originalText;
+  }
+});
+load();
+</script>
+<script src="../js/site-runtime.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Code Consulting &amp; Code Administration | ASI Florida</title>
+<meta name="description" content="Technical code consulting and code-administration support for complex Florida construction and compliance issues.">
+<style>
+:root{--bg:#061017;--bg2:#091821;--ink:#f6efe6;--muted:#98a4ac;--gold:#d5a43e;--gold2:#efc76f;--line:rgba(255,255,255,.13);--max:1280px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 48px));margin:auto}
+nav{position:fixed;inset:0 0 auto;z-index:30;padding:18px 0;background:linear-gradient(to bottom,rgba(3,12,18,.96),rgba(3,12,18,.55),transparent);backdrop-filter:blur(14px)}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:22px}.brand{display:flex;align-items:center;gap:13px}.mark{width:42px;height:42px;border:1px solid rgba(213,164,62,.75);border-radius:50%;display:grid;place-items:center;color:var(--gold);font:400 21px Georgia}.brandText{font-size:12px;line-height:1.12;letter-spacing:.16em;font-weight:700}.links{display:flex;gap:26px;align-items:center;font-size:12px;color:#cfd6da}.quotePill{border:1px solid rgba(213,164,62,.7);padding:12px 18px;border-radius:999px;color:#ebcd8b}
+.hero{min-height:86vh;display:flex;align-items:center;padding:130px 0 80px;position:relative;overflow:hidden;background:radial-gradient(circle at 72% 36%,rgba(46,104,128,.18),transparent 28%),linear-gradient(180deg,#061017,#07151e)}
+.hero:before{content:"";position:absolute;right:-5vw;top:12vh;width:44vw;aspect-ratio:1;border:1px solid rgba(213,164,62,.12);border-radius:50%;box-shadow:0 0 0 70px rgba(255,255,255,.012),0 0 0 140px rgba(255,255,255,.006)}
+.heroGrid{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center;position:relative;z-index:2}.eyebrow{font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}.rule{width:38px;height:2px;background:var(--gold);margin-bottom:24px}h1,h2,h3,p{margin:0}h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:400}h1{font-size:clamp(62px,7vw,116px);line-height:.92;letter-spacing:-.05em;max-width:9ch}.hero p{margin-top:28px;color:#aeb9bf;font-size:18px;line-height:1.7;max-width:690px}.actions{display:flex;gap:15px;flex-wrap:wrap;margin-top:36px}.btn{display:inline-flex;padding:15px 22px;border:1px solid var(--line);font-size:10px;letter-spacing:.1em;text-transform:uppercase}.btn.primary{background:linear-gradient(90deg,#c89b42,#e9c66f);border-color:transparent;color:#111;font-weight:700}
+.sideCard{border:1px solid var(--line);border-radius:28px;padding:32px;background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.018));backdrop-filter:blur(12px)}.sideCard small{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#7d8992}.sideCard h3{font-size:34px;margin-top:18px}.sideCard p{font-family:Inter,Arial,sans-serif;color:#91a0a8;font-size:13px;line-height:1.65;margin-top:12px}.sideMetric{padding:18px 0;border-top:1px solid var(--line);margin-top:18px}.sideMetric b{display:block;color:#e7d6b2;font-size:12px;letter-spacing:.08em;text-transform:uppercase}.sideMetric span{display:block;color:#8b99a2;font-size:12px;margin-top:6px;line-height:1.5}
+section{padding:105px 0;border-top:1px solid var(--line)}.sectionHead{display:grid;grid-template-columns:.75fr 1.25fr;gap:72px;margin-bottom:54px}.sectionHead h2{font-size:clamp(46px,5.5vw,78px);line-height:.97;letter-spacing:-.045em}.sectionHead p{color:var(--muted);font-size:17px;line-height:1.72;max-width:720px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.infoCard{border:1px solid var(--line);border-radius:24px;padding:30px;min-height:240px;background:rgba(255,255,255,.025)}.infoCard small{color:var(--gold);letter-spacing:.18em}.infoCard h3{font-size:29px;margin:42px 0 11px}.infoCard p{font-family:Inter,Arial,sans-serif;color:#8e9ba4;font-size:13px;line-height:1.62}
+.light{background:#ece5da;color:#11191d}.lightGrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:center}.light .eyebrow{color:#7d6127}.light h2{font-size:clamp(48px,5.8vw,84px);line-height:.97}.light p{color:#4a555b;font-size:18px;line-height:1.72}.points{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:35px}.point{border-top:1px solid rgba(0,0,0,.2);padding-top:14px}.point b{font-size:10px;letter-spacing:.12em;text-transform:uppercase}.point span{display:block;color:#5b666b;font-size:13px;line-height:1.5;margin-top:7px}
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:24px;overflow:hidden}.step{background:#09151d;padding:28px;min-height:235px}.step small{color:var(--gold)}.step h3{font-size:27px;margin:52px 0 10px}.step p{font-family:Inter,Arial,sans-serif;color:#8d9aa3;font-size:13px;line-height:1.58}
+.ctaBox{border:1px solid rgba(213,164,62,.3);border-radius:30px;padding:52px;background:linear-gradient(135deg,rgba(213,164,62,.13),rgba(255,255,255,.03) 44%,rgba(40,89,112,.13));display:grid;grid-template-columns:1fr auto;gap:35px;align-items:center}.ctaBox h2{font-size:clamp(44px,5vw,74px);line-height:.97}.ctaBox p{color:#97a4ad;font-size:16px;line-height:1.65;margin-top:16px;max-width:700px}
+footer{border-top:1px solid var(--line);padding:32px 0 44px;color:#71808a;font-size:10px}.foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+@media(max-width:900px){.links a:not(.quotePill){display:none}.heroGrid,.sectionHead,.lightGrid,.ctaBox{grid-template-columns:1fr}.grid3{grid-template-columns:1fr 1fr}.process{grid-template-columns:1fr 1fr}}@media(max-width:600px){.wrap{width:calc(100% - 28px)}.grid3,.points,.process{grid-template-columns:1fr}.hero{padding-top:120px}}
+</style>
+
+<style id="v12-production">
+:focus-visible{outline:2px solid var(--gold,#d5a43e);outline-offset:4px}
+.skipLink{
+  position:fixed;left:14px;top:-50px;z-index:999;background:#fff;color:#111;
+  padding:10px 14px;border-radius:8px;font-size:13px;transition:.2s
+}
+.skipLink:focus{top:14px}
+img{max-width:100%;height:auto}
+[aria-hidden="true"]{pointer-events:none}
+.srOnly{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.cookieNote{
+  border-top:1px solid var(--line,rgba(255,255,255,.12));
+  margin-top:24px;padding-top:16px;color:#71808a;font-size:11px;line-height:1.55
+}
+.legalLinks{display:flex;gap:14px;flex-wrap:wrap}
+.legalLinks a{color:#71808a}
+.legalLinks a:hover{color:#fff}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
+</style>
+
+<link rel="canonical" href="https://www.asccinspection.net/consulting.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#061017">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="<span data-asi-company>American Standard Construction & Inspection</span>">
+<meta property="og:title" content="Code Consulting &amp; Code Administration | ASI Florida">
+<meta property="og:description" content="Technical code consulting and code-administration support for complex Florida construction and compliance issues.">
+<meta property="og:url" content="https://www.asccinspection.net/consulting.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Code Consulting &amp; Code Administration | ASI Florida">
+<meta name="twitter:description" content="Technical code consulting and code-administration support for complex Florida construction and compliance issues.">
+<script src="../../config/site-config.js"></script>
+<link rel="manifest" href="../site.webmanifest">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+</head><body><a class="skipLink" href="#main-content">Skip to main content</a>
+<nav aria-label="Primary navigation"><div class="wrap nav"><a class="brand" href="../index.html"><span class="mark">A</span><span class="brandText">AMERICAN STANDARD<br>CONSTRUCTION & INSPECTION</span></a><div class="links"><a href="index.html#capabilities">Capabilities</a><a href="index.html#expertise">Expertise</a><a href="index.html#sectors">Who We Serve</a><a href="index.html#about">About ASI</a><a class="quotePill" href="../quote.html">Request a Quote ↗</a></div></div></nav>
+<header id="main-content" class="hero"><div class="wrap heroGrid"><div><div class="eyebrow">ASI / Consulting</div><div class="rule"></div><h1>For the questions that do not fit neatly in a checklist.</h1><p>Technical code consulting and code-administration expertise for difficult interpretations, unusual project conditions, existing buildings, and high-consequence decisions.</p><div class="actions"><a class="btn primary" href="../quote.html">Request a Consulting Quote ↗</a><a class="btn" href="../index.html">Back to ASI</a></div></div><aside class="sideCard"><small>Consulting & Code Administration</small><h3>Sometimes the problem is the intersection.</h3><p>The hardest project questions often sit between disciplines. ASI brings construction, inspection, code administration, and life-safety perspectives into the same conversation.</p><div class="sideMetric"><b>Primary Goal</b><span>Create defensible clarity</span></div><div class="sideMetric"><b>Best Fit</b><span>Complex or unusual conditions</span></div><div class="sideMetric"><b>Pairs With</b><span>Any ASI service</span></div></aside></div></header>
+<section><div class="wrap"><div class="sectionHead"><div><div class="eyebrow">What This Service Does</div><h2>Focused expertise without losing the whole project.</h2></div><p>ASI approaches each service as part of the broader construction and compliance environment. That means understanding not only the immediate task, but how it affects what comes next.</p></div><div class="grid3"><article class="infoCard"><small>01</small><h3>Code Interpretation</h3><p>Technical analysis of difficult compliance questions.</p></article><article class="infoCard"><small>02</small><h3>Existing Conditions</h3><p>Guidance where existing buildings and current requirements interact.</p></article><article class="infoCard"><small>03</small><h3>Project Strategy</h3><p>Support for teams navigating complex regulatory decisions.</p></article></div></div></section>
+<section class="light"><div class="wrap lightGrid"><div><div class="eyebrow">The ASI Approach</div><h2>Technically correct is not enough if nobody can use the answer.</h2></div><div><p>ASI consulting is built around translating technical requirements into a practical decision path that the project team can understand, document, and act on.</p><div class="points"><div class="point"><b>Technical Depth</b><span>Look beyond surface-level code references.</span></div><div class="point"><b>Judgment</b><span>Apply experience to facts and project conditions.</span></div><div class="point"><b>Documentation</b><span>Support decisions with a clear technical basis.</span></div></div></div></div></section>
+<section><div class="wrap"><div class="sectionHead"><div><div class="eyebrow">How It Works</div><h2>A clear service path.</h2></div><p>The exact scope changes by project, but the engagement should always be understandable from the beginning.</p></div><div class="process"><div class="step"><small>01</small><h3>Frame</h3><p>Define the exact technical question.</p></div><div class="step"><small>02</small><h3>Research</h3><p>Review facts, documents, and applicable requirements.</p></div><div class="step"><small>03</small><h3>Analyze</h3><p>Evaluate interpretations and project implications.</p></div><div class="step"><small>04</small><h3>Advise</h3><p>Provide clear findings and recommended next steps.</p></div></div></div></section>
+<section><div class="wrap"><div class="ctaBox"><div><div class="eyebrow">Start With ASI</div><h2>Request a Consulting Quote</h2><p>Tell us about the project, property, or technical issue. ASI can help define the right scope from there.</p></div><a class="btn primary" href="../quote.html">Start Project Intake ↗</a></div></div></section>
+<footer><div class="wrap foot"><span><span data-asi-company>AMERICAN STANDARD CONSTRUCTION & INSPECTION</span></span><span>CONSTRUCTION • COMPLIANCE • CONSULTING • FLORIDA</span></div><div class="wrap cookieNote">This website prototype does not currently use analytics or tracking cookies. Production privacy, terms, and accessibility statements should be finalized before launch.<div class="legalLinks" style="margin-top:8px"><a href="../legal/privacy.html">Privacy</a><a href="../legal/terms.html">Terms</a><a href="../legal/accessibility.html">Accessibility</a></div></div></footer>
+<script src="../../js/site-runtime.js"></script>
+</body></html>
