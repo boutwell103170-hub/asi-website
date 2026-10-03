@@ -47,20 +47,20 @@ img{max-width:100%;height:auto}
 </style>
 
 <link rel="canonical" href="https://www.asccinspection.net/quote.html">
-<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#061017">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="<span data-asi-company>American Standard Construction & Inspection</span>">
+<meta property="og:site_name" content="American Standard Construction &amp; Inspection">
 <meta property="og:title" content="Request a Project Quote | ASI Florida">
 <meta property="og:description" content="Start a project inquiry with American Standard Construction &amp; Inspection for plan review, inspections, permitting, consulting, private provider, and related services.">
 <meta property="og:url" content="https://www.asccinspection.net/quote.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Request a Project Quote | ASI Florida">
 <meta name="twitter:description" content="Start a project inquiry with American Standard Construction &amp; Inspection for plan review, inspections, permitting, consulting, private provider, and related services.">
-<script src="../config/site-config.js"></script>
-<script src="../js/quote-adapter.js"></script>
+<script src="config/site-config.js"></script>
+<script src="js/quote-adapter.js"></script>
 <link rel="manifest" href="site.webmanifest">
-<link rel="icon" href="../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/logos/favicon.svg" type="image/svg+xml">
 </head>
 <body><a class="skipLink" href="#main-content">Skip to main content</a>
 <nav aria-label="Primary navigation"><div class="wrap nav"><a class="brand" href="index.html"><span class="mark">A</span><span class="brandText">AMERICAN STANDARD<br>CONSTRUCTION & INSPECTION</span></a><a class="back" href="index.html">← Back to ASI</a></div></nav>
@@ -68,6 +68,7 @@ img{max-width:100%;height:auto}
 <header class="hero"><div class="wrap"><div class="eyebrow">Project Intake</div><h1>Tell us what you're working on.</h1><p>You do not need to know the perfect service name before you start. Give us the project, property, or problem. This intake helps ASI understand the scope before the first conversation.</p></div></header>
 
 <main id="main-content" class="wrap">
+<p id="modeNotice" role="status">Sandbox preview only. No inquiry or files will be sent to ASI.</p>
 <div class="shell" id="shell">
 <div class="topbar">
   <div class="stepTab active" data-tab="1">01 / Service</div>
@@ -79,14 +80,14 @@ img{max-width:100%;height:auto}
   <section class="pane active" data-pane="1">
     <div class="paneHead"><h2>What brings you to ASI?</h2><p>Select the closest fit. This does not lock you into a service; it simply helps route the project correctly.</p></div>
     <div class="serviceChoice" id="serviceChoices">
-      <div class="choice" data-service="Plan Review"><small>Plans</small><b>Plan Review</b><span>Code-focused review before or during permitting.</span></div>
-      <div class="choice" data-service="Construction Inspections"><small>Field</small><b>Construction Inspections</b><span>Inspection support for active construction.</span></div>
-      <div class="choice" data-service="Private Provider Services"><small>Project Delivery</small><b>Private Provider</b><span>Eligible Florida plan review and inspection services.</span></div>
-      <div class="choice" data-service="Permit Assistance"><small>Permitting</small><b>Permit Assistance</b><span>Help navigating documentation and process friction.</span></div>
-      <div class="choice" data-service="Fire & Life Safety"><small>Life Safety</small><b>Fire & Life Safety</b><span>Inspection, coordination, or technical guidance.</span></div>
-      <div class="choice" data-service="Consulting / Code Administration"><small>Technical</small><b>Consulting</b><span>Difficult code, existing conditions, or technical strategy.</span></div>
-      <div class="choice" data-service="Home Inspection"><small>Property</small><b>Home Inspection</b><span>Independent property inspection services.</span></div>
-      <div class="choice" data-service="Not Sure"><small>General</small><b>Not Sure Yet</b><span>Describe the need and ASI will route it.</span></div>
+      <div class="choice" role="button" aria-pressed="false" tabindex="0" data-service="Plan Review"><small>Plans</small><b>Plan Review</b><span>Code-focused review before or during permitting.</span></div>
+      <div class="choice" role="button" aria-pressed="false" tabindex="0" data-service="Construction Inspections"><small>Field</small><b>Construction Inspections</b><span>Inspection support for active construction.</span></div>
+      <div class="choice" role="button" aria-pressed="false" tabindex="0" data-service="Private Provider Services"><small>Project Delivery</small><b>Private Provider</b><span>Eligible Florida plan review and inspection services.</span></div>
+      <div class="choice" role="button" aria-pressed="false" tabindex="0" data-service="Permit Assistance"><small>Permitting</small><b>Permit Assistance</b><span>Help navigating documentation and process friction.</span></div>
+      <div class="choice" role="button" aria-pressed="false" tabindex="0" data-service="Fire & Life Safety"><small>Life Safety</small><b>Fire & Life Safety</b><span>Inspection, coordination, or technical guidance.</span></div>
+      <div class="choice" role="button" aria-pressed="false" tabindex="0" data-service="Consulting / Code Administration"><small>Technical</small><b>Consulting</b><span>Difficult code, existing conditions, or technical strategy.</span></div>
+      <div class="choice" role="button" aria-pressed="false" tabindex="0" data-service="Home Inspection"><small>Property</small><b>Home Inspection</b><span>Independent property inspection services.</span></div>
+      <div class="choice" role="button" aria-pressed="false" tabindex="0" data-service="Not Sure"><small>General</small><b>Not Sure Yet</b><span>Describe the need and ASI will route it.</span></div>
     </div>
     <div class="navRow"><span></span><button class="btn primary" type="button" data-next="2" id="serviceNext" disabled>Continue ↗</button></div>
   </section>
@@ -94,14 +95,14 @@ img{max-width:100%;height:auto}
   <section class="pane" data-pane="2">
     <div class="paneHead"><h2>Tell us about the project.</h2><p>Basic client and project information gives ASI the context needed to evaluate the request.</p></div>
     <div class="formGrid">
-      <div class="field" data-required><label>Name *</label><input id="name" type="text"><span class="error">Please enter your name.</span></div>
-      <div class="field"><label>Company</label><input id="company" type="text"></div>
-      <div class="field" data-required><label>Email *</label><input id="email" type="email"><span class="error">Enter a valid email address.</span></div>
-      <div class="field"><label>Phone</label><input id="phone" type="tel"></div>
-      <div class="field" data-required><label>Project Location *</label><input id="location" type="text" placeholder="City / County"><span class="error">Enter the project location.</span></div>
-      <div class="field"><label>Project Type</label><select id="projectType"><option value="">Select one</option><option>Residential</option><option>Commercial</option><option>Multifamily</option><option>Hospitality</option><option>Institutional / Government</option><option>Industrial</option><option>Existing Building / Renovation</option><option>Other</option></select></div>
-      <div class="field"><label>Approximate Square Footage</label><input id="squareFootage" type="text" placeholder="e.g. 5,200 SF"></div>
-      <div class="field"><label>Permit Status</label><select id="permitStatus"><option value="">Select one</option><option>Not yet submitted</option><option>Submitted / under review</option><option>Permit issued</option><option>Construction underway</option><option>Not sure / not applicable</option></select></div>
+      <div class="field" data-required><label for="name">Name *</label><input id="name" type="text"><span class="error">Please enter your name.</span></div>
+      <div class="field"><label for="company">Company</label><input id="company" type="text"></div>
+      <div class="field" data-required><label for="email">Email *</label><input id="email" type="email"><span class="error">Enter a valid email address.</span></div>
+      <div class="field"><label for="phone">Phone</label><input id="phone" type="tel"></div>
+      <div class="field" data-required><label for="location">Project Location *</label><input id="location" type="text" placeholder="City / County"><span class="error">Enter the project location.</span></div>
+      <div class="field"><label for="projectType">Project Type</label><select id="projectType"><option value="">Select one</option><option>Residential</option><option>Commercial</option><option>Multifamily</option><option>Hospitality</option><option>Institutional / Government</option><option>Industrial</option><option>Existing Building / Renovation</option><option>Other</option></select></div>
+      <div class="field"><label for="squareFootage">Approximate Square Footage</label><input id="squareFootage" type="text" placeholder="e.g. 5,200 SF"></div>
+      <div class="field"><label for="permitStatus">Permit Status</label><select id="permitStatus"><option value="">Select one</option><option>Not yet submitted</option><option>Submitted / under review</option><option>Permit issued</option><option>Construction underway</option><option>Not sure / not applicable</option></select></div>
     </div>
     <div class="navRow"><button class="btn" type="button" data-next="1">← Back</button><button class="btn primary" type="button" data-next="3">Continue ↗</button></div>
   </section>
@@ -109,10 +110,10 @@ img{max-width:100%;height:auto}
   <section class="pane" data-pane="3">
     <div class="paneHead"><h2>What do you need?</h2><p>This is the useful part. Tell ASI what is happening, what is needed, and attach anything that helps explain the project.</p></div>
     <div class="formGrid">
-      <div class="field full" data-required><label>Project Scope / Request *</label><textarea id="scope" placeholder="Describe the project, service needed, code issue, inspection request, permitting problem, or other relevant details."></textarea><span class="error">Please provide a short description of the request.</span></div>
-      <div class="field"><label>Desired Timing</label><select id="timing"><option value="">Select one</option><option>As soon as practical</option><option>Within 1–2 weeks</option><option>Within 30 days</option><option>Planning / future project</option><option>Not sure</option></select></div>
-      <div class="field"><label>How did you hear about ASI?</label><select id="source"><option value="">Select one</option><option>Referral</option><option>Existing client</option><option>Web search</option><option>Contractor / builder</option><option>Local government / agency</option><option>Other</option></select></div>
-      <div class="field full upload"><label>Plans / Documents</label><input id="files" type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.dwg,.dxf"><span class="help">Add plans, reports, permit comments, photos, or supporting documents. In this prototype files remain local to your browser and are not uploaded anywhere.</span><div class="fileList" id="fileList"></div></div>
+      <div class="field full" data-required><label for="scope">Project Scope / Request *</label><textarea id="scope" placeholder="Describe the project, service needed, code issue, inspection request, permitting problem, or other relevant details."></textarea><span class="error">Please provide a short description of the request.</span></div>
+      <div class="field"><label for="timing">Desired Timing</label><select id="timing"><option value="">Select one</option><option>As soon as practical</option><option>Within 1–2 weeks</option><option>Within 30 days</option><option>Planning / future project</option><option>Not sure</option></select></div>
+      <div class="field"><label for="source">How did you hear about ASI?</label><select id="source"><option value="">Select one</option><option>Referral</option><option>Existing client</option><option>Web search</option><option>Contractor / builder</option><option>Local government / agency</option><option>Other</option></select></div>
+      <div class="field full upload"><label for="files">Plans / Documents</label><input id="files" type="file" disabled aria-describedby="documentPolicy"><span class="help" id="documentPolicy">Document uploads are deferred. Submit project details first; ASI will arrange document transfer afterward. Do not include payment, identity, sensitive personal information or confidential document contents in this inquiry.</span><div class="fileList" id="fileList"></div></div>
     </div>
     <div class="navRow"><button class="btn" type="button" data-next="2">← Back</button><button class="btn primary" type="button" data-next="4">Review ↗</button></div>
   </section>
@@ -132,7 +133,7 @@ img{max-width:100%;height:auto}
 <div class="srOnly" aria-hidden="true">
   <label>Leave this field empty<input id="website" type="text" tabindex="-1" autocomplete="off"></label>
 </div>
-<div class="navRow"><button class="btn" type="button" data-next="3">← Back</button><button class="btn primary" type="button" id="submitBtn">Submit Project Inquiry ↗</button></div>
+<div class="navRow"><button class="btn" type="button" data-next="3">← Back</button><button class="btn primary" type="button" id="submitBtn">Test Intake (Nothing Sent) ↗</button></div>
   </section>
   <div class="saveNote">Progress is automatically saved in this browser.</div>
 </div>
@@ -156,12 +157,12 @@ try{const saved=JSON.parse(localStorage.getItem(stateKey)||'null');if(saved)stat
 const ids=['name','company','email','phone','location','projectType','squareFootage','permitStatus','scope','timing','source'];
 function save(){
   ids.forEach(id=>{const el=document.getElementById(id);if(el)state[id]=el.value});
-  localStorage.setItem(stateKey,JSON.stringify({...state,files:[]}));
+  try{localStorage.setItem(stateKey,JSON.stringify({...state,files:[]}));}catch(e){document.querySelector('.saveNote').textContent='Browser storage is unavailable. Your draft will not persist after leaving this page.';}
 }
 function load(){
   ids.forEach(id=>{const el=document.getElementById(id);if(el&&state[id])el.value=state[id]});
   if(state.service){
-    document.querySelectorAll('.choice').forEach(c=>c.classList.toggle('selected',c.dataset.service===state.service));
+    document.querySelectorAll('.choice').forEach(c=>{const selected=c.dataset.service===state.service;c.classList.toggle('selected',selected);c.setAttribute('aria-pressed',String(selected));});
     document.getElementById('serviceNext').disabled=false;
   }
 }
@@ -169,6 +170,8 @@ function showStep(n){
   document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('active',p.dataset.pane==n));
   document.querySelectorAll('.stepTab').forEach(t=>t.classList.toggle('active',t.dataset.tab==n));
   if(n==4)buildReview();
+  const heading=document.querySelector(`.pane[data-pane="${n}"] h2`);
+  if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}
   save();
   window.scrollTo({top:document.getElementById('shell').offsetTop-95,behavior:'smooth'});
 }
@@ -180,14 +183,19 @@ function validateStep(n){
     let valid=el.value.trim()!=='';
     if(el.type==='email'&&valid)valid=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value);
     f.classList.toggle('invalid',!valid);
+    el.setAttribute('aria-invalid',String(!valid));
+    const error=f.querySelector('.error');
+    if(error){error.id=el.id+'Error';el.setAttribute('aria-describedby',error.id);}
     if(!valid)ok=false;
   });
+  if(!ok)pane.querySelector('.invalid input,.invalid textarea,.invalid select')?.focus();
   return ok;
 }
 document.querySelectorAll('.choice').forEach(c=>c.addEventListener('click',()=>{
   state.service=c.dataset.service;
-  document.querySelectorAll('.choice').forEach(x=>x.classList.remove('selected'));
+  document.querySelectorAll('.choice').forEach(x=>{x.classList.remove('selected');x.setAttribute('aria-pressed','false');});
   c.classList.add('selected');
+  c.setAttribute('aria-pressed','true');
   document.getElementById('serviceNext').disabled=false;
   save();
 }));
@@ -210,7 +218,8 @@ document.getElementById('files').addEventListener('change',e=>{
     state.files=picked.map(f=>({name:f.name,size:f.size,type:f.type}));
   }
   const list=document.getElementById('fileList');
-  list.innerHTML=state.files.map(f=>`<div class="fileItem"><span>${f.name}</span><span>${Math.ceil(f.size/1024)} KB</span></div>`).join('');
+  list.replaceChildren();
+  state.files.forEach(f=>{const row=document.createElement('div');row.className='fileItem';row.textContent=f.name+' — '+Math.ceil(f.size/1024)+' KB';list.appendChild(row);});
 });
 function buildReview(){
   save();
@@ -221,9 +230,13 @@ function buildReview(){
     <div class="reviewCard"><small>Project</small><b>${esc(state.projectType)}</b><p>${esc(state.location)}<br>${esc(state.squareFootage)}<br>${esc(state.permitStatus)}</p></div>
     <div class="reviewCard"><small>Timing</small><b>${esc(state.timing)}</b><p>Source: ${esc(state.source)}</p></div>
     <div class="reviewCard full"><small>Scope</small><p>${esc(state.scope)}</p></div>
-    <div class="reviewCard full"><small>Documents</small><p>${state.files.length?state.files.map(f=>esc(f.name)).join('<br>'):'No files attached.'}</p></div>`;
+    <div class="reviewCard full"><small>Documents</small><p>${state.files.length?state.files.map(f=>esc(f.name)).join('<br>'):'Documents will be arranged separately; uploads are deferred.'}</p></div>`;
 }
 document.getElementById('submitBtn').addEventListener('click', async ()=>{
+  const submitControl=document.getElementById('submitBtn');
+  if(submitControl.disabled)return;
+  if(!state.service){showStep(1);return;}
+  for(const step of [2,3]){if(!validateStep(step)){showStep(step);validateStep(step);return;}}
   save();
   const consent=document.getElementById('consent');
   const consentError=document.getElementById('consentError');
@@ -243,22 +256,37 @@ document.getElementById('submitBtn').addEventListener('click', async ()=>{
 
   try{
     const fileInput=document.getElementById('files');
-    const result=await window.ASI_QUOTE_SUBMIT({...state}, [...(fileInput.files||[])]);
-    localStorage.removeItem(stateKey);
+    const details=Object.fromEntries(ids.map(id=>[id,state[id]]));
+    details.service=state.service;details.consent=consent.checked;details.consentVersion='asi-project-inquiry-v1';details.website=honeypot.value;
+    const result=await window.ASI_QUOTE_SUBMIT(details, [...(fileInput.files||[])]);
+    if(result?.mode==='sandbox'){document.getElementById('modeNotice').textContent=result.message;return;}
+    if(result?.ok!==true || result.mode!=='production')throw new Error('Receipt not confirmed');
+    try{localStorage.removeItem(stateKey);}catch(e){}
+    document.querySelector('#success h2').textContent='Submitted for email delivery.';
     document.getElementById('formContent').style.display='none';
     document.getElementById('success').classList.add('show');
     const successP=document.querySelector('#success p');
     if(successP && result && result.message) successP.textContent=result.message;
     window.scrollTo({top:document.getElementById('shell').offsetTop-95,behavior:'smooth'});
   }catch(err){
-    alert('We could not submit your inquiry. Please try again or contact ASI directly.');
-    console.error(err);
+    alert('Delivery was not confirmed. Your draft is retained. Before retrying, check with ASI to avoid a duplicate inquiry.');
+    const reference=/^[0-9a-f-]{36}$/i.test(err?.submissionId||'')?' Reference: '+err.submissionId+'.':'';
+    document.getElementById('modeNotice').textContent='Delivery was not confirmed. Your draft is retained. Check with ASI before starting another inquiry.'+reference;
+  }finally{
     submitBtn.disabled=false;
     submitBtn.textContent=originalText;
   }
 });
+document.querySelectorAll('.choice').forEach(c=>c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();c.click();}}));
+if(window.ASI_CONFIG?.quoteMode!=='sandbox'){
+  const ready=window.ASI_CONFIG?.quoteMode==='production'&&window.ASI_CONFIG?.quoteEndpoint;
+  document.getElementById('modeNotice').textContent=ready?'Submitting sends your project details for email delivery to ASI. Documents are arranged separately.':'Project submissions are currently unavailable.';
+  document.getElementById('submitBtn').textContent=ready?'Submit Project Inquiry ↗':'Submission unavailable';
+  document.getElementById('submitBtn').disabled=!ready;
+  // The details-only document policy remains visible in every mode.
+}
 load();
 </script>
-<script src="../js/site-runtime.js"></script>
+<script src="js/site-runtime.js"></script>
 </body>
 </html>

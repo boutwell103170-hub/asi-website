@@ -1,0 +1,17 @@
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+dist/
+tmp/
+*.log
+uploads/
+
+asi-website/dist/
+asi-website/qa-output/
+__pycache__/

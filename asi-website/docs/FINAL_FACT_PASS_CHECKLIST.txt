@@ -1,0 +1,46 @@
+ASI FINAL FACT PASS CHECKLIST
+
+Do not launch until each item below is verified.
+
+BUSINESS IDENTITY
+[ ] Public business phone
+[ ] Public business email
+[ ] Final legal/company display name
+[ ] Confirm production domain: asccinspection.net
+
+CREDENTIALS
+[ ] Exact Building Official / Code Administrator title
+[ ] Exact license number(s) intended for public display
+[ ] Building Inspector credential/title
+[ ] Plans Examiner / Plan Review credential/title
+[ ] Fire Safety Inspector credential/title
+[ ] Home Inspector credential/title, if publicly marketed
+[ ] Any other certification or credential included on the site
+
+MARKETING CLAIMS
+[ ] Years of experience — verified wording
+[ ] Project count — verified or removed
+[ ] Statewide Florida service claim — confirm scope
+[ ] Private Provider service wording — verify legal/operational scope
+[ ] Expedited permit assistance wording — verify no turnaround guarantee is implied
+
+LEGAL / OPERATIONS
+[ ] Final privacy policy
+[ ] Final website terms
+[ ] Accessibility statement
+[ ] Quote form backend endpoint
+[ ] File upload destination and retention policy
+[ ] Spam / rate limiting
+[ ] Malware scanning for uploads
+[ ] Email or CRM routing
+[ ] Confirmation email to client, if desired
+
+DEPLOYMENT
+[ ] HTTPS enabled
+[ ] DNS pointed to sandbox/staging host
+[ ] Test desktop Chrome/Firefox/Safari/Edge
+[ ] Test iPhone and Android
+[ ] Test keyboard-only navigation
+[ ] Test all service links
+[ ] Test 404 page
+[ ] Submit sitemap to search engines after launch
