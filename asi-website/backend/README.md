@@ -1,6 +1,6 @@
 # Details-only intake core: offline candidate
 
-No provider is activated and no real email has been sent. `node backend/quote-server.cjs` starts an intentionally unconfigured loopback server; it returns 503 for intake. The public website remains sandbox. This is code and controlled test evidence, not an operating production workflow.
+A disabled-by-default Resend transport, renderer and runtime bootstrap are present. No provider is activated and no real email has been sent. `node backend/quote-server.cjs` starts an intentionally unconfigured loopback server; it returns 503 for intake. The public website remains sandbox. This is code and controlled test evidence, not an operating production workflow.
 
 ## Contract
 
@@ -24,10 +24,10 @@ Provide an approved bootstrap with all of:
 1. Fixed `recipient` loaded from server-only deployment configuration `ASI_NOTIFICATION_EMAIL`. The approved value is held outside this public repository. Never accept recipient/sender from a client request. Validate the sender separately with the chosen provider.
 2. Exact HTTPS `origin`, a securely provisioned token-signing secret of at least 32 characters, and verified same-origin routing for both `/api/quote` and `/api/quote/token`. No secret value belongs in this repository or public artifact.
 3. Approved `transport.submit({recipient, fields, idempotencyKey, renderVersion, signal})`. It must respect cancellation, return only confirmed `{accepted: true, providerMessageId}`, use HTTPS, fixed verified sender and validated Reply-To, enforce deterministic rendering and reject key/body conflicts. Production also requires `authorized: true`, `idempotencyWindowMs >= 86400000`, and `renderVersion: 'asi-quote-v1'`. These capability declarations are integration prerequisites, not verification in themselves. No Resend or other provider implementation/key is enabled here.
-4. Verified `limiter.consume({ipKey, kind, submissionId?}) -> boolean`, with `shared: true` after operational validation. It must enforce per-client burst/sustained limits, global capacity and daily delivery quota for `kind: 'delivery'`, plus token/intake request limits. An approved edge service may supply enforcement; this interface does not mandate a database. Proxy headers are ignored until actual ingress identity semantics are verified. An unverified single-process counter is not production protection.
+4. Verified `limiter.consume({ipKey, kind, submissionId?}) -> boolean`, using either genuinely shared enforcement or the explicitly bounded single-instance strategy described below. It must enforce per-client burst/sustained limits, global capacity and daily delivery quota for `kind: 'delivery'`, plus token/intake request limits. An approved edge service may supply enforcement; this interface does not mandate a database. Proxy headers are ignored until actual ingress identity semantics are verified. A single-process counter alone is insufficient; the selected bounded strategy additionally requires verified single-instance hosting and an independent provider hard quota.
 5. Host-level request/header deadlines and ingress limits, monitoring ownership, provider quota/bounce handling, privacy/retention approval and an authorized synthetic staging delivery actually observed in the intended inbox.
 
-Default missing dependencies fail closed. The bootstrap wiring and provider/rate integration remain deliberately absent pending approval. No purchase, persistent access grant, sender-DNS change, host configuration or deployment is implied by implementing this core.
+Default missing dependencies fail closed. Bootstrap wiring and provider/rate implementations now exist but remain disabled pending explicit activation approval and verification. No purchase, persistent access grant, sender-DNS change, host configuration or deployment is implied by implementing this core.
 
 ## Tests
 
@@ -38,3 +38,24 @@ From repository root: `node --test asi-website/tests/*.test.cjs`. Tests inject s
 No durable historical tombstones exist in provider-bounded mode. A deliberately new authorization request can mint a new token for an old ID; after provider retention ends, the server cannot prove historical non-delivery. The guarantee is bounded to the signed retry window and verified provider retention, plus the supplied client’s no-auto-renewal behavior. It is not global or indefinite exactly-once delivery. Operators must reconcile expired/uncertain references before instructing a new submission.
 
 Limiter and durable-store calls have two-second deadlines; provider submission has an eight-second deadline. Deadline expiry releases per-process active slots and yields no success. External operations may finish late, so durable implementations must retain atomic idempotent semantics; a timed-out reserve/confirm may need reconciliation. Tests simulate unavailable/hung dependencies.
+
+## Resend/runtime implementation and operational boundaries
+
+`resend-transport.cjs` uses fixed `https://api.resend.com/emails`, Bearer authorization and `Idempotency-Key`. It sends deterministic plain text with fixed configured From/To and validated customer Reply-To. It never creates an HTML body, attachments, CC/BCC, user-selected recipients or retry timestamps. Provider error bodies are not exposed; successful JSON is bounded to 4 KiB and requires a provider UUID. A 6.5-second transport deadline covers response reading; redirects and uncertain responses fail closed.
+
+`runtime.cjs` is the proposed entry point (`npm start` in backend/). Delivery defaults off. Enabling it requires every approval/verification flag in `.env.example`, one instance, fixed server addresses, exact HTTPS origin, a signing secret and a valid-shaped provider credential. These flags are operator attestations, not proof that a setting or approval exists. They must remain false until the corresponding real checks and approvals are complete. Startup must not print credential values. `/api/health` indicates configured/disabled state only and explicitly does not verify email delivery.
+
+The selected `SingleInstanceLimiter` is **not shared or durable**: 20 token/intake requests per minute and 60 per hour per socket-derived pseudonymous client key, 120 global requests per minute, at most 75 distinct delivery identities per rolling day. Four in-flight requests are capped separately. Same-reference retries do not spend another local delivery identity. These are conservative initial limits, not a promised service volume. Runtime requires a verified provider-side hard quota with no automatic paid overage as the independent cost/abuse backstop. Counters reset on restart; overlapping deployment processes can each have local counters. The provider backstop must remain effective across those resets. Do not claim a global 75/day guarantee. Scaling beyond one instance requires a new verified rate strategy.
+
+Forwarded client-IP headers remain untrusted. The socket-derived key may group users behind the hosting proxy, conservatively reducing throughput; verify this behavior and accept or explicitly change the ingress policy before launch. Do not silently trust arbitrary forwarded headers.
+
+`deployment/api-proposal.yaml` is an unapplied merge fragment, not a replacement for the existing app. It proposes one Node API component and an `/api` ingress rule preserving the prefix; retain the static `/` rule. All route, origin, port, health, sender-domain, DNS and secret configuration must be verified in approved staging. Node 22 is declared for the hosting buildpack; local tests ran under Node 24, with CI set to check both versions.
+
+## Primary implementation references
+
+- [Resend Send Email API](https://resend.com/docs/api-reference/emails/send-email): request fields, endpoint and response contract
+- [Resend idempotency](https://resend.com/docs/dashboard/emails/idempotency-keys): 24-hour retention and conflicting/concurrent request semantics
+- [DigitalOcean app specification](https://docs.digitalocean.com/products/app-platform/reference/app-spec/): proposed service and ingress structure
+- [DigitalOcean Node buildpack](https://docs.digitalocean.com/products/app-platform/reference/buildpacks/nodejs/): Node runtime/package detection
+
+References checked 2026-10-03. No live provider call or configuration was used to verify this candidate; tests inject fake HTTP responses.

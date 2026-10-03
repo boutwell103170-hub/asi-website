@@ -1,6 +1,7 @@
 window.ASI_CONFIG = {
   companyName: "American Standard Construction & Inspection",
   shortName: "ASI",
+  legalOperator: "American Standard Construction & Safety Consulting LLC",
   domain: "https://www.asccinspection.net",
 
   // FINAL FACT PASS — replace only when verified.

@@ -25,3 +25,7 @@ Current hosting directly serves `asi-website/site` from `main` with Auto Deploy 
 This verifies only bounded offline behavior. No real email provider, credentials, live limiter, recipient delivery, hosting route or rendered browser outcome was exercised. Production provider capabilities are explicit required assertions to verify during approved integration, not evidence supplied by these tests.
 
 The review candidate is based directly on the original repository baseline. Public content includes code, tests and engineering documentation only; recipient configuration remains server-side and absent from the repository.
+
+## Disabled provider/runtime implementation pass
+
+The suite now includes 49 passing offline tests. Added official-API request formatting, deterministic plain-text renderer and reply routing, redacted provider errors, bounded response parsing/timeouts, missing-approval/configuration rejection, bounded single-instance quotas, operator identification, safe proposed routing and runtime-to-provider fake integration. No real network email calls were made. `npm ci --ignore-scripts --offline` succeeded with zero dependencies; local Node24 reports the expected engine warning because the proposed hosting engine is Node22. CI checks both Node22 and Node24; its result must be verified for the published candidate. The provider remains disabled and the proposed app fragment is unapplied.

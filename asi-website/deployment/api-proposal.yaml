@@ -1,0 +1,37 @@
+# UNAPPLIED MERGE FRAGMENT, not a complete app spec. Requires separate approval.
+# Preserve existing app/static settings. Do not apply as a replacement app spec.
+# Configure encrypted component-only runtime secrets separately; none are embedded here.
+services:
+  - name: asi-quote-api
+    github:
+      repo: boutwell103170-hub/asi-website
+      branch: REPLACE_WITH_APPROVED_REVIEW_BRANCH
+      deploy_on_push: false
+    source_dir: /asi-website/backend
+    environment_slug: node-js
+    build_command: npm ci --ignore-scripts --offline
+    run_command: node runtime.cjs
+    http_port: 8081
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    health_check:
+      http_path: /api/health
+    envs:
+      - key: ASI_ENABLE_DELIVERY
+        value: "false"
+        scope: RUN_TIME
+      - key: PORT
+        value: "8081"
+        scope: RUN_TIME
+      - key: ASI_INSTANCE_COUNT
+        value: "1"
+        scope: RUN_TIME
+# Merge this rule ahead of the existing static '/' rule, retaining that rule.
+ingress:
+  rules:
+    - match:
+        path:
+          prefix: /api
+      component:
+        name: asi-quote-api
+        preserve_path_prefix: true

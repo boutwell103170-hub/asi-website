@@ -4,9 +4,9 @@ This is a non-live review candidate, not an approved production release. Publica
 
 ## Blocking decisions and evidence
 
-- Verify company/contact details, credential titles/numbers, experience and project counts, service geography, private-provider and expedited-permit language. Inherited business prose is preserved, not newly verified. Placeholder configuration remains explicitly unverified. See FINAL_FACT_PASS_CHECKLIST.txt.
+- Verify remaining contact details, credential titles/numbers, experience and project counts, service geography, private-provider and expedited-permit language. Inherited business prose is preserved, not newly verified. Placeholder configuration remains explicitly unverified. See FINAL_FACT_PASS_CHECKLIST.txt.
 - Approve final privacy, terms, accessibility and retention practices. Draft persistence currently uses browser localStorage; selected files do not persist. Do not enter real client material into the preview.
-- Implement and verify the quote backend: validation, limits, spam/rate controls, upload scanning/storage/retention, notification routing and explicit receipt contract. No backend destination has been invented. The proposed adapter contract requires same-origin HTTPS POST multipart, JSON `{ "ok": true, "receiptId": "nonempty reference" }`. Controlled mocks are not evidence of an operating backend.
+- Implement and verify the quote backend: details-only validation, limits, spam/rate controls, notification routing and explicit receipt contract. No backend destination has been invented. The proposed adapter contract requires same-origin HTTPS POST multipart, JSON `{ "ok": true, "receiptId": "nonempty reference" }`. Controlled mocks are not evidence of an operating backend.
 - Confirm the actual hosting account/app, current deployed source, domain routing and existing mail records. A matching public source repository does not prove it is the deployed origin. The unapplied DigitalOcean template is corrected for the nested repository but must not be applied without separate approval.
 - Review and authorize production release separately. Default artifact and HTML are noindex; robots blocks all crawling; sandbox never transmits. Production build deliberately refuses until these gates are resolved in a subsequent approved change. `_headers` is a provider-specific template, not evidence headers are live on DigitalOcean or any other host.
 
@@ -33,6 +33,13 @@ Public phone is `334-733-9576` with telephone link `tel:+13347339576`. Quote-not
 
 ## Details-only implementation update
 
-The details-only launch scope is selected. Upload input is visibly disabled with instructions to arrange document transfer afterward; server rejects any file part. A bounded offline intake core now exists, but no provider, production limiter or operational bootstrap is configured. The recommended strategy uses 30-minute content-bound signed tokens and provider-backed idempotency, avoiding a mandatory new database. See backend/README.md for exact transport, token, rate, origin and routing dependencies.
+The details-only launch scope is selected. Upload input is visibly disabled with instructions to arrange document transfer afterward; server rejects any file part. A bounded offline intake core now exists, with disabled provider transport, bounded rate policy and runtime bootstrap now implemented but not operationally configured or approved for activation. The recommended strategy uses 30-minute content-bound signed tokens and provider-backed idempotency, avoiding a mandatory new database. See backend/README.md for exact transport, token, rate, origin and routing dependencies.
 
 Only an explicit `submitted_for_email_delivery` acceptance stage can trigger the client completion message. This does not mean inbox arrival. The quote notification recipient must be supplied through approved server-only deployment configuration, not published in this repository. Earlier descriptions of an unimplemented backend refer to the historical baseline; the current implementation remains disabled and unverified against live infrastructure.
+
+
+## Operator identification and activation gates
+
+The website operator is identified as American Standard Construction & Safety Consulting LLC while retaining ASI branding. This identification does not assert a registered d/b/a. Final privacy/terms and unverified credentials/claims remain outstanding.
+
+The proposed delivery approach does not itself approve deployment, expenses, credential creation, sender DNS changes or activation. Keep all runtime approval flags false until the relevant checks and authorization exist. Single-instance local rate counters reset and require a verified independent provider hard quota with no paid overage. No new database is required by this implementation. See backend/README.md for the exact limits and staged verification checklist.
