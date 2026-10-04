@@ -1,0 +1,61 @@
+{
+  "baseline_commit": "785f9a2eb0382e23ca227a50986dfdc187465ca7",
+  "donors": [
+    {
+      "source": "V13/site-config.js",
+      "destination": "asi-website/site/config/site-config.js",
+      "source_sha256": "ba5ac86eb23a29aea1a7746a1715d2a43e411c9e80baca59f3e3c7929f759755"
+    },
+    {
+      "source": "V13/site-runtime.js",
+      "destination": "asi-website/site/js/site-runtime.js",
+      "source_sha256": "a0e92de022827d449065d783a288fa7abe4194b8d93db75052b39e054e9a4178"
+    },
+    {
+      "source": "V13/quote-adapter.js",
+      "destination": "asi-website/site/js/quote-adapter.js",
+      "source_sha256": "5a3c661f8d736b75aadeebbcc4ca2665430a1766ba7ae37d4d8d3d1e027e6ce2"
+    },
+    {
+      "source": "V13/favicon.svg",
+      "destination": "asi-website/site/assets/logos/favicon.svg",
+      "source_sha256": "3bacc6d150d8ff054b8de386906f3c3e05d320bf25c2e75f0b268345561b0917"
+    },
+    {
+      "source": "V13/site.webmanifest",
+      "destination": "asi-website/site/site.webmanifest",
+      "source_sha256": "11b2dc443af0bb7fdd46b3a01453fdbe4cd151cb4a7437be39ab0815fa7d044a"
+    },
+    {
+      "source": "V13/robots.txt",
+      "destination": "asi-website/site/robots.txt",
+      "source_sha256": "45cb80d18d1a65454e8ffc466ee4f949276b354f4708a941eeac1efd4b8769bc"
+    },
+    {
+      "source": "V13/sitemap.xml",
+      "destination": "asi-website/site/sitemap.xml",
+      "source_sha256": "c673f8a53e7e992422240c3c9b3cb64702a3761f5ddbd0b3d53a9cc0a8f00fcd"
+    },
+    {
+      "source": "V13/_headers",
+      "destination": "asi-website/site/_headers",
+      "source_sha256": "844a661928a649d4fbae847bc4c3cc8e13fe7c262a2f7eba24f2e4456110e582"
+    },
+    {
+      "source": "alpha/.gitignore",
+      "destination": ".gitignore",
+      "source_sha256": "8b06ecc99462693c2c7cb86c142054f8b67ac1334e074b4d6b39191d6f44a58e"
+    },
+    {
+      "source": "alpha/.github/workflows/validate.yml",
+      "destination": ".github/workflows/validate.yml",
+      "source_sha256": "33d1ba7ebb5065fa5c72eed4448b6502c9a2fc4415d3c89612868df5bbfdf14e"
+    },
+    {
+      "source": "alpha/backend/.env.example",
+      "destination": "asi-website/backend/.env.example",
+      "source_sha256": "6b8f1a7510eb10aca0734704eecddb59f8e908fa307e1fa21da6a40debbb78e4"
+    }
+  ],
+  "note": "Hashes describe original donor bytes before documented technical repairs. Original archives and baseline branch retained."
+}

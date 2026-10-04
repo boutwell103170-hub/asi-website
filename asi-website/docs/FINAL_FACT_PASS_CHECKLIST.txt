@@ -1,0 +1,55 @@
+ASI FINAL FACT PASS CHECKLIST
+
+Do not launch until each item below is verified.
+
+BUSINESS IDENTITY
+[ ] Public business phone
+[ ] Public business email
+[ ] Final legal/company display name
+[ ] Confirm production domain: asccinspection.net
+
+CREDENTIALS
+[ ] Exact Building Official / Code Administrator title
+[ ] Exact license number(s) intended for public display
+[ ] Building Inspector credential/title
+[ ] Plans Examiner / Plan Review credential/title
+[ ] Fire Safety Inspector credential/title
+[ ] Home Inspector credential/title, if publicly marketed
+[ ] Any other certification or credential included on the site
+
+MARKETING CLAIMS
+[x] 20+ years of team experience — owner-confirmed; not ASI company age
+[x] Approximately 1,000 projects across our team’s careers — owner-reported estimate, not independently verified
+[ ] Statewide Florida service claim — confirm scope
+[ ] Private Provider service wording — verify legal/operational scope
+[ ] Expedited permit assistance wording — verify no turnaround guarantee is implied
+
+LEGAL / OPERATIONS
+[ ] Final privacy policy
+[ ] Final website terms
+[ ] Accessibility statement
+[ ] Quote form backend endpoint
+[ ] File upload destination and retention policy
+[ ] Spam / rate limiting
+[ ] Malware scanning for uploads
+[ ] Email or CRM routing
+[ ] Confirmation email to client, if desired
+
+DEPLOYMENT
+[ ] HTTPS enabled
+[ ] DNS pointed to sandbox/staging host
+[ ] Test desktop Chrome/Firefox/Safari/Edge
+[ ] Test iPhone and Android
+[ ] Test keyboard-only navigation
+[ ] Test all service links
+[ ] Test 404 page
+[ ] Submit sitemap to search engines after launch
+
+CURRENT DETAILS-ONLY SCOPE (2026-10-04)
+The historical checklist above is not a request to re-collect approved facts or add features.
+- Public phone and website operator identification are already established in LAUNCH_GATES.md.
+- File upload destination, malware scanning and file retention are NOT APPLICABLE to this release: uploads are disabled and rejected server-side. Arrange documents separately.
+- A client confirmation email is NOT in the approved sending contract. Do not add a second email without a separately approved requirement.
+- Provider transport, bounded limiter and no-send API staging are implemented. Live delivery and inbox acceptance remain unverified.
+- The API deployment does not publish the repaired frontend: static hosting still tracks main. Review deployed static commit before rendered QA.
+- Use the current completion sequence in LAUNCH_GATES.md for unresolved facts, policy decisions, host/provider evidence and separate release authorization.

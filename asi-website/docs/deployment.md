@@ -1,3 +1,5 @@
+> Historical alpha documentation. Current preview paths, submission contract and release restrictions are in [LAUNCH_GATES.md](LAUNCH_GATES.md) and the repository README. Do not execute historical deployment steps.
+
 # Deployment
 
 1. Push repository to GitHub.

@@ -1,0 +1,22 @@
+name: Validate Site
+on: [push, pull_request]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [22, 24]
+    defaults:
+      run:
+        working-directory: asi-website
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: python tests/check_site.py
+      - run: node --test tests/*.test.cjs
+      - run: python tests/check_artifact.py
