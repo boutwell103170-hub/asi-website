@@ -29,3 +29,16 @@ The review candidate is based directly on the original repository baseline. Publ
 ## Disabled provider/runtime implementation pass
 
 The suite now includes 49 passing offline tests. Added official-API request formatting, deterministic plain-text renderer and reply routing, redacted provider errors, bounded response parsing/timeouts, missing-approval/configuration rejection, bounded single-instance quotas, operator identification, safe proposed routing and runtime-to-provider fake integration. No real network email calls were made. `npm ci --ignore-scripts --offline` succeeded with zero dependencies; local Node24 reports the expected engine warning because the proposed hosting engine is Node22. CI checks both Node22 and Node24; its result must be verified for the published candidate. The provider remains disabled and the proposed app fragment is unapplied.
+
+## No-send staging readiness repair (2026-10-04)
+
+Isolated checkout base: `8ed56061cca411a7d057110348ed0807f8d16454`, verified against GitHub draft PR #1 and a direct fetch of `repair/asi-shadow-validation-20261003`. Main was not modified.
+
+- `node --test asi-website/tests/*.test.cjs`: **55/55 pass** on Node 24.14.0, including all 49 existing tests unchanged and six new staging tests. Coverage includes conflicting activation, malformed flags, missing production approvals, unreadable credential getters, zero provider calls, truthful liveness/readiness, intake rejection, full-prefix routes and a real child-process HTTP smoke test with an allowlisted OS environment.
+- `python asi-website/tests/check_site.py`: PASS, 12 pages.
+- `python asi-website/tests/check_artifact.py`: PASS, 23 public files identical to source; private files excluded; production build blocked.
+- Windows Python checks require `$env:PYTHONUTF8='1'` before running the commands (initial system-codepage attempts failed decoding existing UTF-8 HTML). Public checkout bytes were restored from the base commit to avoid Git CRLF conversion; the generated Windows-path BUILD_MANIFEST was restored, not included in this repair.
+- `npm --prefix asi-website/backend ci --ignore-scripts --offline`: PASS, no dependencies; expected engine warning because hosting specifies Node 22.x and available local Node is 24.14.0. Independent Linux validation also passed all 55 tests, 12 HTML checks and 23 artifact hashes. Node 22 remains for published CI; actual host execution remains unverified.
+- `node --check asi-website/backend/runtime.cjs`, syntax checks of all nonempty inline JavaScript in index.html and quote.html, and `git diff --check`: PASS.
+
+No real provider request, key access, browser interaction, purchase, push, merge, deployment, or live configuration change. The liveness repair is local test evidence only; it does not clear business, delivery, rendered QA or launch gates. Exact unapplied setup is in backend/README.md and deployment/api-proposal.yaml.

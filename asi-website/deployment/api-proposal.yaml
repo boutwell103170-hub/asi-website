@@ -1,6 +1,7 @@
 # UNAPPLIED MERGE FRAGMENT, not a complete app spec. Requires separate approval.
 # Preserve existing app/static settings. Do not apply as a replacement app spec.
-# Configure encrypted component-only runtime secrets separately; none are embedded here.
+# No-send staging only: no secrets or production approval flags required.
+# This fragment incurs hosting costs if applied; it is not authorization to apply it.
 services:
   - name: asi-quote-api
     github:
@@ -15,8 +16,11 @@ services:
     instance_count: 1
     instance_size_slug: basic-xxs
     health_check:
-      http_path: /api/health
+      http_path: /api/live
     envs:
+      - key: ASI_NO_SEND_STAGING
+        value: "true"
+        scope: RUN_TIME
       - key: ASI_ENABLE_DELIVERY
         value: "false"
         scope: RUN_TIME

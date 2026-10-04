@@ -59,3 +59,40 @@ Forwarded client-IP headers remain untrusted. The socket-derived key may group u
 - [DigitalOcean Node buildpack](https://docs.digitalocean.com/products/app-platform/reference/buildpacks/nodejs/): Node runtime/package detection
 
 References checked 2026-10-03. No live provider call or configuration was used to verify this candidate; tests inject fake HTTP responses.
+
+## Explicit no-send staging (unapplied)
+
+Set `ASI_NO_SEND_STAGING=true` together with `ASI_ENABLE_DELIVERY=false` to bind the runtime to `0.0.0.0`. Both values are exact, case-sensitive strings. Missing or conflicting delivery settings block startup in staging; malformed staging values also block startup. With staging absent or `false`, the existing disabled default still binds only `127.0.0.1`. Production activation still requires every existing approval and configuration check; staging must be absent or `false` before any separately approved production activation.
+
+Staging constructs only the unconfigured intake handler. It does not read provider credentials or signing secrets, create a provider transport, issue tokens, accept quotes, or send email, even if production approval flags are accidentally present. No credentials, sender, recipient, origin or approval attestations are needed for staging. Leave them unset; never set an approval flag just to satisfy a health check.
+
+- `GET /api/live`: HTTP 200, `{"status":"alive","deliveryEnabled":false,"deliveryVerified":false}` in no-send staging. This indicates process liveness only.
+- `GET /api/health`: remains HTTP 503, `{"status":"disabled","deliveryVerified":false}` in no-send staging. With separately approved delivery configuration it still reports `configured` (200), never verified inbox delivery.
+- `POST /api/quote` and `POST /api/quote/token`: HTTP 503 with `NOT_CONFIGURED`; no receipt or token. Public quote UI remains sandbox.
+
+### Exact DigitalOcean configuration for later review
+
+`deployment/api-proposal.yaml` is an **unapplied merge fragment**, not a replacement spec or permission to create a paid component. Hosting must use the reviewed branch containing this repair only after separate hosting authorization. Keep the existing static component, root route, source history and design intact.
+
+| Setting / spec field | Required value |
+| --- | --- |
+| Component name | `asi-quote-api` |
+| Source Directory / `source_dir` | `/asi-website/backend` |
+| Build Command / `build_command` | `npm ci --ignore-scripts --offline` |
+| Run Command / `run_command` | `node runtime.cjs` |
+| HTTP Port / `http_port` | `8081` (replace the wizard's `8080`) |
+| Health check HTTP path / `health_check.http_path` | `/api/live` |
+| Runtime environment variable `PORT` | `8081` |
+| Runtime environment variable `ASI_NO_SEND_STAGING` | `true` |
+| Runtime environment variable `ASI_ENABLE_DELIVERY` | `false` |
+| Runtime environment variable `ASI_INSTANCE_COUNT` | `1` |
+| Instance count / `instance_count` | `1` |
+| Auto Deploy / `github.deploy_on_push` | Off / `false` |
+| Git branch | Separately approved review branch containing this repair; never `main` |
+| Ingress prefix / `ingress.rules[].match.path.prefix` | `/api` |
+| Ingress target / `ingress.rules[].component.name` | `asi-quote-api` |
+| Preserve prefix / `ingress.rules[].component.preserve_path_prefix` | `true`; no `rewrite` |
+
+Merge the `/api` rule ahead of the existing static `/` rule, retaining the latter. The backend must receive `/api/live`, `/api/health`, `/api/quote` and `/api/quote/token` unchanged. Stripping `/api` causes 404 responses. Health checks default to the component HTTP port; the explicit `PORT=8081` and `http_port: 8081` must agree. These field semantics were checked against the [official DigitalOcean app spec reference](https://docs.digitalocean.com/products/app-platform/reference/app-spec/) on 2026-10-04. Wizard labels can differ; the spec keys above are authoritative.
+
+After separate hosting authorization, verify liveness is 200, readiness is 503, and both intake POST routes remain 503/`NOT_CONFIGURED` on the actual HTTPS origin. A successful liveness check cannot establish email readiness or satisfy any launch gate. Hosting, cost authorization, real routing and rendered QA remain unverified. This repair does not authorize hosting submission or deployment.
