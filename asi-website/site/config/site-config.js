@@ -18,10 +18,10 @@ window.ASI_CONFIG = {
     { label: "Fire Safety", value: "[VERIFY TITLE / LICENSE]" }
   ],
 
-  // Keep numeric proof points blank until verified.
+  // Owner-confirmed team experience; project count is an owner-reported career estimate.
   proofPoints: [
-    { value: "[VERIFY]", label: "Years of Experience", detail: "Replace with verified public-facing fact." },
-    { value: "[VERIFY]", label: "Projects Supported", detail: "Replace with verified public-facing fact." },
+    { value: "20+", label: "Years of Team Experience", detail: "Across construction, code, and life safety." },
+    { value: "About 1,000", label: "Projects Supported", detail: "Across our team’s careers." },
     { value: "MULTI", label: "Disciplinary Expertise", detail: "Construction, code, inspection, fire/life safety." },
     { value: "CODE FOCUSED", label: "Technical Depth", detail: "Deep code expertise across project conditions." },
     { value: "CLIENT FIRST", label: "Service Standard", detail: "Direct. Responsive. Practical." }

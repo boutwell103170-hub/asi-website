@@ -18,8 +18,8 @@ CREDENTIALS
 [ ] Any other certification or credential included on the site
 
 MARKETING CLAIMS
-[ ] Years of experience — verified wording
-[ ] Project count — verified or removed
+[x] 20+ years of team experience — owner-confirmed; not ASI company age
+[x] Approximately 1,000 projects across our team’s careers — owner-reported estimate, not independently verified
 [ ] Statewide Florida service claim — confirm scope
 [ ] Private Provider service wording — verify legal/operational scope
 [ ] Expedited permit assistance wording — verify no turnaround guarantee is implied
