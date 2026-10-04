@@ -269,9 +269,11 @@ document.getElementById('submitBtn').addEventListener('click', async ()=>{
     if(successP && result && result.message) successP.textContent=result.message;
     window.scrollTo({top:document.getElementById('shell').offsetTop-95,behavior:'smooth'});
   }catch(err){
-    alert('Delivery was not confirmed. Your draft is retained. Before retrying, check with ASI to avoid a duplicate inquiry.');
+    const notAttempted=err?.deliveryAttempted===false;
     const reference=/^[0-9a-f-]{36}$/i.test(err?.submissionId||'')?' Reference: '+err.submissionId+'.':'';
-    document.getElementById('modeNotice').textContent='Delivery was not confirmed. Your draft is retained. Check with ASI before starting another inquiry.'+reference;
+    const message=notAttempted?'Submission could not be completed. No inquiry was submitted for email delivery. Your details remain on this page. Check your details before trying again.':'Delivery was not confirmed. Your draft is retained. Check with ASI before starting another inquiry.'+reference;
+    document.getElementById('modeNotice').textContent=message;
+    alert(message);
   }finally{
     submitBtn.disabled=false;
     submitBtn.textContent=originalText;

@@ -40,6 +40,8 @@ window.ASI_QUOTE_SUBMIT = async function (payload, files) {
     try { window.localStorage.removeItem(attemptKey); } catch (_) { /* Acceptance remains true even if browser cleanup fails. */ }
     return {ok: true, mode: 'production', receiptId: data.receiptId, message: 'Your inquiry was submitted for email delivery to ASI. Reference: ' + data.receiptId};
   } catch (error) {
+    // Local request progress only; never trust a provider/proxy body for this distinction.
+    error.deliveryAttempted = record.attempted === true;
     if (record.attempted) error.submissionId = record.submissionId;
     throw error;
   } finally { clearTimeout(timer); }

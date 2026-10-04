@@ -44,3 +44,12 @@ DEPLOYMENT
 [ ] Test all service links
 [ ] Test 404 page
 [ ] Submit sitemap to search engines after launch
+
+CURRENT DETAILS-ONLY SCOPE (2026-10-04)
+The historical checklist above is not a request to re-collect approved facts or add features.
+- Public phone and website operator identification are already established in LAUNCH_GATES.md.
+- File upload destination, malware scanning and file retention are NOT APPLICABLE to this release: uploads are disabled and rejected server-side. Arrange documents separately.
+- A client confirmation email is NOT in the approved sending contract. Do not add a second email without a separately approved requirement.
+- Provider transport, bounded limiter and no-send API staging are implemented. Live delivery and inbox acceptance remain unverified.
+- The API deployment does not publish the repaired frontend: static hosting still tracks main. Review deployed static commit before rendered QA.
+- Use the current completion sequence in LAUNCH_GATES.md for unresolved facts, policy decisions, host/provider evidence and separate release authorization.

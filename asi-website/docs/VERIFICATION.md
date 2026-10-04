@@ -42,3 +42,22 @@ Isolated checkout base: `8ed56061cca411a7d057110348ed0807f8d16454`, verified aga
 - `node --check asi-website/backend/runtime.cjs`, syntax checks of all nonempty inline JavaScript in index.html and quote.html, and `git diff --check`: PASS.
 
 No real provider request, key access, browser interaction, purchase, push, merge, deployment, or live configuration change. The liveness repair is local test evidence only; it does not clear business, delivery, rendered QA or launch gates. Exact unapplied setup is in backend/README.md and deployment/api-proposal.yaml.
+
+## Frontend readiness follow-up (2026-10-04)
+
+Base: published repair commit `de4f48ccc2df31651f1f9bd2e9ba0335826bf350`, fetched into an isolated local branch. Five new tests cover generic HTML 503 at authorization versus quote submission, invalid JSON/HTML success pages, network errors, retry identity retention, and truthful visible recovery messaging. Existing tests were retained.
+
+- `node --test asi-website/tests/*.test.cjs`: **60/60 pass**, Node 24.14.0. The published base's Node 22/24 CI results were previously reported; this new local change has not run in remote CI.
+- With Windows `$env:PYTHONUTF8='1'`, `python asi-website/tests/check_site.py`: PASS, 12 pages; `python asi-website/tests/check_artifact.py`: PASS, 23 public source/artifact hashes, private exclusion and production refusal.
+- `npm --prefix asi-website/backend ci --ignore-scripts --offline`: PASS, no dependencies; expected Node22 engine warning on local Node24.
+- `node --check` on every backend CJS/public JS file and all nonempty inline scripts in index.html and quote.html: PASS. `git diff --check`: PASS.
+- BUILD_MANIFEST.json refreshed for the two changed public files, retaining portable forward-slash paths. No visual layout, business claim, backend activation, environment setting, or preview/noindex gate changed.
+
+The repaired frontend is not deployed by changing the API component. Rendered acceptance, exact deployed static revision, host-generated 503 diagnosis and a separately authorized real inbox test remain outside this offline evidence. No account credentials were read, no public endpoint retried, no provider request sent, and no hosting/browser action, publication or merge performed.
+
+
+### Review correction: validation failures (2026-10-04)
+
+Authorization failure copy is now neutral: it asks the visitor to check the details without calling every failure temporary or implying that waiting fixes an invalid field. A new 422 authorization/UI regression uses an over-limit scope, verifies only the token route was attempted, retains details, and checks that no proxy/server text or duplicate warning is displayed. The full suite now passes **61/61** on Node 24.14.0; the 12-page static check, 23-file artifact comparison/production refusal, public/backend/inline syntax checks, offline install and diff checks also pass. The public release-gate document excludes account-specific billing/credential observations; private review evidence and earlier patches remain outside the repository publication candidate. No activation, sending, publication or deployment occurred.
+
+Rendered QA remains blocked: the cloud browser could not render the loopback preview package (`net::ERR_BLOCKED_BY_CLIENT`). No bypass was attempted. This is not a rendered acceptance pass.

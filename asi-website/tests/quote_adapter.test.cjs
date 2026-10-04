@@ -34,3 +34,46 @@ test('client retains token and exact ID after uncertain response; changed fields
 test('uncertain UI displays only a safe structured submission reference',async()=>{const id='12345678-1234-4234-8234-123456789abc';const u=ui(()=>{const e=Error('private server text');e.submissionId=id;throw e});await u.run();assert(u.el.modeNotice.textContent.includes(id));assert(!u.el.modeNotice.textContent.includes('private server text'));const unsafe=ui(()=>{const e=Error('bad');e.submissionId='<img src=x>';throw e});await unsafe.run();assert(!unsafe.el.modeNotice.textContent.includes('<img'))});
 
 test('client rejects a mismatched receipt identity',async()=>{const c=context({quoteMode:'production',quoteEndpoint:'/api/quote'},async()=>({ok:true,json:async()=>({ok:true,deliveryStage:'submitted_for_email_delivery',receiptId:'wrong-id'})}));await assert.rejects(c.submit({},[]),/did not confirm/)});
+
+function stagedAdapter(respond){
+ const requests=[],cache=new Map();
+ const window={localStorage:{getItem:k=>cache.get(k),setItem:(k,v)=>cache.set(k,v),removeItem:k=>cache.delete(k)},crypto:{randomUUID:()=>require('node:crypto').randomUUID()},ASI_CONFIG:{quoteMode:'production',quoteEndpoint:'/api/quote'},location:{href:'https://preview.example/quote.html',origin:'https://preview.example'}};
+ vm.runInNewContext(source,{window,URL,FormData,AbortController,setTimeout,clearTimeout,fetch:async(url,options)=>{requests.push({url,payload:JSON.parse(options.body.get('payload'))});return respond(url,options)}});
+ return {submit:window.ASI_QUOTE_SUBMIT,requests,cache};
+}
+test('generic HTML 503 during authorization never attempts delivery or locks changed details',async()=>{
+ const c=stagedAdapter(()=>new Response('<html>Service unavailable</html>',{status:503,headers:{'content-type':'text/html'}}));
+ for(const scope of ['original','changed'])await assert.rejects(c.submit({scope},[]),e=>{assert.equal(e.deliveryAttempted,false);assert.equal(e.submissionId,undefined);assert(!e.message.includes('<html>'));return true});
+ assert.equal(c.requests.length,2);assert(c.requests.every(r=>r.url.endsWith('/token')));assert.equal(JSON.parse(c.cache.get('asiQuoteAttemptV1')).attempted,false);
+});
+test('HTML 200, invalid JSON and network failure during authorization do not claim a delivery attempt',async()=>{
+ for(const respond of [()=>new Response('<html>proxy page</html>'),()=>new Response('{'),()=>{throw Error('offline')}]){
+  const c=stagedAdapter(respond);await assert.rejects(c.submit({},[]),e=>e.deliveryAttempted===false&&e.submissionId===undefined);assert.equal(c.requests.length,1);
+ }
+});
+test('generic HTML 503 after quote POST retains uncertainty, identity and token without refreshing',async()=>{
+ const c=stagedAdapter(url=>url.endsWith('/token')?new Response(JSON.stringify({token:'synthetic-token',expiresIn:1800})):new Response('<html>Service unavailable</html>',{status:503}));
+ let id;await assert.rejects(c.submit({scope:'same'},[]),e=>{assert.equal(e.deliveryAttempted,true);id=e.submissionId;return true});
+ await assert.rejects(c.submit({scope:'changed'},[]),/uncertain outcome/);
+ await assert.rejects(c.submit({scope:'same'},[]),e=>e.deliveryAttempted===true&&e.submissionId===id);
+ assert.equal(c.requests.filter(r=>r.url.endsWith('/token')).length,1);assert.deepEqual(c.requests[1].payload,c.requests[2].payload);assert(c.cache.has('asiQuoteAttemptV1'));
+});
+test('authorization failure UI retains details and allows retry without a false duplicate warning',async()=>{
+ const u=ui(()=>{const e=Error('<html>private proxy text</html>');e.deliveryAttempted=false;throw e});await u.run();
+ assert.equal(u.removals(),0);assert.equal(u.el.success.shown,undefined);assert.equal(u.el.submitBtn.disabled,false);assert.equal(u.alerts(),1);
+ assert.match(u.el.modeNotice.textContent,/No inquiry was submitted for email delivery/);assert.match(u.el.modeNotice.textContent,/Check your details before trying again/);assert(!u.el.modeNotice.textContent.includes('Check with ASI'));assert(!u.el.modeNotice.textContent.includes('proxy text'));
+});
+test('unknown failures remain conservative and cannot imply that nothing was sent',async()=>{
+ const u=ui(()=>{throw Error('unknown')});await u.run();assert.match(u.el.modeNotice.textContent,/Delivery was not confirmed/);assert(!u.el.modeNotice.textContent.includes('No inquiry was submitted'));
+});
+
+test('422 authorization rejection keeps correction guidance neutral and never attempts delivery',async()=>{
+ const c=stagedAdapter(()=>new Response(JSON.stringify({ok:false,code:'INVALID_FIELD',message:'untrusted server detail'}),{status:422,headers:{'content-type':'application/json'}}));
+ const u=ui(()=>c.submit({scope:'x'.repeat(8001)},[]));await u.run();
+ assert.equal(c.requests.length,1);assert(c.requests[0].url.endsWith('/token'));
+ assert.equal(JSON.parse(c.cache.get('asiQuoteAttemptV1')).attempted,false);
+ assert.equal(u.removals(),0);assert.equal(u.el.success.shown,undefined);assert.equal(u.el.submitBtn.disabled,false);
+ const message=u.el.modeNotice.textContent;
+ assert.match(message,/No inquiry was submitted for email delivery/);assert.match(message,/Check your details before trying again/);
+ assert(!/temporarily|try again later|untrusted server detail|Check with ASI/.test(message));
+});
